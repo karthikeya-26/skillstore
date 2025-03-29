@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+         version="4.0">
+
+    <!-- Servlet configuration for Jersey REST Service -->
+    <servlet>
+        <servlet-name>Jersey REST Service</servlet-name>
+        <servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
+        <init-param>
+            <param-name>jersey.config.server.provider.packages</param-name>
+            <param-value>org.karthik.skillstore.resources,org.karthik.skillstore.exceptions,org.karthik.skillstore.filters</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>Jersey REST Service</servlet-name>
+        <url-pattern>/api/*</url-pattern>
+    </servlet-mapping>
+
+    <!-- Listener for application startup -->
+    <listener>
+        <listener-class>org.karthik.skillstore.listeners.AppListener</listener-class>
+    </listener>
+
+    <!-- Filter definition -->
+    <!--    <filter>-->
+    <!--        <filter-name>MyRequestFilter</filter-name>-->
+    <!--        <filter-class>org.karthik.skillstore.filters.AuthFilter</filter-class> &lt;!&ndash; Your filter class here &ndash;&gt;-->
+    <!--    </filter>-->
+
+    <!--    &lt;!&ndash; Filter mapping &ndash;&gt;-->
+    <!--    <filter-mapping>-->
+    <!--        <filter-name>MyRequestFilter</filter-name>-->
+    <!--        <url-pattern>/api/*</url-pattern> &lt;!&ndash; Filter applies to all org.karthik.skillstore.resources under /api/ &ndash;&gt;-->
+    <!--    </filter-mapping>-->
+
+</web-app>
